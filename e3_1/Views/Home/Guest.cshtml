@@ -1,6 +1,4 @@
-﻿@model e3_1.Models.Review
-@model IEnumerable<e3_1.Models.Review>
-@{
+﻿@{
     ViewBag.Title = "Guest";
 }
 
@@ -14,18 +12,23 @@
         <ul>
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("Guest", "Guest", "Home")</li>
-            <li>@Html.ActionLink("Profiles", "Profiles", "Home")</li>
+            <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
         </ul>
     </div>
     <div class="content">
         <h2>list review</h2>
-        @using (Html.BeginForm("PostGuest", "Home", FormMethod.Post))
+        @foreach (var review in ViewBag.Reviews)
+        {
+            <p>@review.Name
+            @review.Date</p>
+            <p>@review.Text</p>
+        }
+
+        @model e3_1.Models.Review
+        @using (Html.BeginForm("Guest", "Home", FormMethod.Post))
         {
             @Html.TextBoxFor(m => m.Name)
             @Html.TextBoxFor(m => m.Text)
-
-            @*@Html.TextBox("UserName", null, new { placeholder = "Enter your name", style = "width:300px" })<br/>
-            @Html.TextBox("UserText", null, new { placeholder = "Enter your review", style = "width:300px" })<br/>*@
             <input type="submit" name="Button" value="Submit" />
         }
     </div>

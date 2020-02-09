@@ -22,22 +22,37 @@ namespace e3_1.Controllers
         }
 
         [HttpPost]
-        public ActionResult PostGuest(Review review)
+        public ActionResult Guest(Review review)
         {
             review.Date = DateTime.Now;
             ReviewContainer.reviews.Add(review);
+            return RedirectToAction("Guest");
+        }
+
+        public ActionResult Guest()
+        {
+            ViewBag.Reviews = ReviewContainer.reviews;
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Guest()
-        {
-            return View(ReviewContainer.reviews);
-        }
-
-        public ActionResult Profiles()
+        public ActionResult Profile()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Profile(Profile profile)
+        {
+            TempData["profile"] = profile;
+
+            return View();
+        }
+
+        public ActionResult ProfileResult ()
+        {
+            ViewBag.Profile = TempData["profile"];
 
             return View();
         }

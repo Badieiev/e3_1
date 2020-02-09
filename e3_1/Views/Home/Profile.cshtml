@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+<header>
+    <div class="top">
+        <h2>Modern company</h2>
+    </div>
+</header>
+<div class="layout">
+    <div class="sidebar">
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Guest", "Guest", "Home")</li>
+            <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2>fill out a form</h2>
+        @model e3_1.Models.Profile
+        @using (Html.BeginForm("Profile", "Home", FormMethod.Post))
+        {
+            <h3>your name:</h3>
+            @Html.TextBoxFor(m =>m.Name)
+            <h3>have you ever been in:</h3>
+            @Html.CheckBoxFor(m =>m.Shanghai)<span>Shanghai</span><br />
+            @Html.CheckBoxFor(m =>m.Wuhan)<span>Wuhan</span><br />
+            @Html.CheckBoxFor(m =>m.Fujian)<span>Fujian</span><br />
+            <h3>what is your body temperature?</h3>
+            @Html.RadioButtonFor(m =>m.T36_6, true)<span>36.6</span><br />
+            @Html.RadioButtonFor(m =>m.TMore36_6, true)<span>>36.6</span><br />
+            <br />
+            <input type="submit" name="Button" value="Submit" />
+        }
+
+    </div>
+</div>
+
+
+

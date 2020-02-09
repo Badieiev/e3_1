@@ -13,17 +13,18 @@
         <ul>
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("Guest", "Guest", "Home")</li>
-            <li>@Html.ActionLink("Profiles", "Profiles", "Home")</li>
+            <li>@Html.ActionLink("Profile", "Profile", "Home")</li>
         </ul>
     </div>
     <div class="content">
-        <h2>list article</h2>
+        <h2>list article:</h2>
+        @foreach (var article in Model)
+        {
+            <p>@Html.DisplayFor(articleItem => article.Name)
+            @Html.DisplayFor(articleItem => article.Date)</p>
+            <p>@Html.DisplayFor(articleItem => article.Text)</p>
+        }
     </div>
 </div>
 
-@foreach (var article in Model)
-{
-    <p>@Html.DisplayFor(articleItem => article.Name)</p>
-    <p>@Html.DisplayFor(articleItem => article.Date)</p>
-    <p>@Html.DisplayFor(articleItem => article.Text)</p>
-        }
+

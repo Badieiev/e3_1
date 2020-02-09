@@ -125,6 +125,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\ReviewContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -165,7 +166,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Guest.cshtml" />
-    <Content Include="Views\Home\Profiles.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\ProfileResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
