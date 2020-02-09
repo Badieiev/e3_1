@@ -1,0 +1,32 @@
+﻿@model e3_1.Models.Review
+@model IEnumerable<e3_1.Models.Review>
+@{
+    ViewBag.Title = "Guest";
+}
+
+<header>
+    <div class="top">
+        <h2>Modern company</h2>
+    </div>
+</header>
+<div class="layout">
+    <div class="sidebar">
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Guest", "Guest", "Home")</li>
+            <li>@Html.ActionLink("Profiles", "Profiles", "Home")</li>
+        </ul>
+    </div>
+    <div class="content">
+        <h2>list review</h2>
+        @using (Html.BeginForm("PostGuest", "Home", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Text)
+
+            @*@Html.TextBox("UserName", null, new { placeholder = "Enter your name", style = "width:300px" })<br/>
+            @Html.TextBox("UserText", null, new { placeholder = "Enter your review", style = "width:300px" })<br/>*@
+            <input type="submit" name="Button" value="Submit" />
+        }
+    </div>
+</div>
