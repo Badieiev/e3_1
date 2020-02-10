@@ -2,28 +2,24 @@
 @{
     ViewBag.Title = "ProfileResult";
 }
+@using e3_1.Controllers
+<ul>
+    <li>
+        name: @ViewBag.Name
+    </li>
+    <li>
+        age: @ViewBag.Age
+    </li>
+    <li>
+        marital_status: @ViewBag.MaritalStatus
+    </li>
+    <li>
+        education:
+        @if (ViewBag.edu != null)
+        {
+            @Html.CreateOrderedList(ViewBag.edu as List<string>);
+        }
 
-    <ul>
-        <li>
-            name: @ViewBag.Name
-        </li>
-        <li>
-            age: @ViewBag.Age
-        </li>
-        <li>
-            marital_status: @ViewBag.MaritalStatus
-        </li>
-        <li>
-            education:
-            @if (ViewBag.edu != null)
-            {
-                foreach (var e in ViewBag.edu)
-                {
-                    <p>@e</p>
-                }
-            }
+    </li>
 
-        </li>
-
-    </ul>
-
+</ul>
