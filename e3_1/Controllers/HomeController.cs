@@ -46,14 +46,41 @@ namespace e3_1.Controllers
         public ActionResult Profile(Profile profile)
         {
             TempData["profile"] = profile;
-
-            return View();
+            return RedirectToAction("ProfileResult");
         }
 
         public ActionResult ProfileResult ()
         {
-            ViewBag.Profile = TempData["profile"];
-
+            var profile = TempData["profile"] as Profile;
+            if (profile != null)
+            {
+                ViewBag.Name = profile.Name;
+                ViewBag.Age = profile.Age;
+                ViewBag.MaritalStatus = profile.Single ? "single" : "married";
+                List<string> edu = new List<string>();
+                if (profile.None)
+                {
+                    edu.Add("none education");
+                }
+                if (profile.High_school)
+                {
+                    edu.Add("high school");
+                }
+                if (profile.Bachelor)
+                {
+                    edu.Add("barchelor");
+                }
+                if (profile.Master)
+                {
+                    edu.Add("master");
+                }
+                if (profile.Phd)
+                {
+                    edu.Add("phd");
+                }
+                ViewBag.edu = edu;
+            }
+            
             return View();
         }
     }

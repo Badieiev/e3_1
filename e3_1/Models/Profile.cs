@@ -5,18 +5,20 @@ using System.Web;
 
 namespace e3_1.Models
 {
-    public class Profile
+     public class Profile
     {
         public string Name { get; set; }
 
-        public bool Shanghai { get; set; }
-        public bool Wuhan { get; set; }
-        public bool Fujian { get; set; }
+        public int Age { get; set; }
 
-        public bool T36_6 { get; set; }
+        public bool Single { get; set; }
 
-        public bool TMore36_6 { get; set; }
+        public bool NoSingle { get; set; }
 
-
+        public bool None { get; set; }
+        public bool High_school { get; set; }
+        public bool Bachelor { get; set; }
+        public bool Master { get; set; }
+        public bool Phd { get; set; }
     }
 }

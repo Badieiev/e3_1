@@ -3,5 +3,27 @@
     ViewBag.Title = "ProfileResult";
 }
 
+    <ul>
+        <li>
+            name: @ViewBag.Name
+        </li>
+        <li>
+            age: @ViewBag.Age
+        </li>
+        <li>
+            marital_status: @ViewBag.MaritalStatus
+        </li>
+        <li>
+            education:
+            @if (ViewBag.edu != null)
+            {
+                foreach (var e in ViewBag.edu)
+                {
+                    <p>@e</p>
+                }
+            }
 
+        </li>
+
+    </ul>
 
