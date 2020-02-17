@@ -47,5 +47,32 @@ namespace e3_1.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Review(int id)
+        {
+            ViewBag.ArticleId = id;
+            return View(repository.GetReviews(id));
+        }
+
+        public ActionResult CreateReview(int id)
+        {
+            ViewBag.ArticleId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateReview(Review review)
+        {
+            if (!ModelState.IsValid) return View(review);
+
+            Article article = repository.Get(review.ArticleId);
+            if (article != null)
+            {
+                review.Date = DateTime.Now;
+                article.Reviews.Add(review);
+                repository.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
