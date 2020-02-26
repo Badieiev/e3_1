@@ -1,4 +1,5 @@
 ﻿using e3_1.Models;
+using e3_1.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,19 @@ namespace e3_1.Controllers
         // GET: Article
         public ActionResult Index()
         {
-            return View(repository.GetAll());
+            var allArticles = repository.GetAll();
+            List<ArticlePreview> articlePreviews = new List<ArticlePreview>();
+            foreach (var article in allArticles)
+            {
+                var articlePreview = new ArticlePreview{ Article = article};
+                articlePreviews.Add(articlePreview);
+            }
+
+
+            return View(articlePreviews);
         }
+
+
         public ActionResult Create()
         {
             return View();
@@ -73,6 +85,55 @@ namespace e3_1.Controllers
                 repository.SaveChanges();
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Profile()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Profile(Profile profile)
+        {
+            TempData["profile"] = profile;
+            return RedirectToAction("ProfileResult");
+        }
+
+        public ActionResult ProfileResult()
+        {
+            var profile = TempData["profile"] as Profile;
+            if (profile != null)
+            {
+                ViewBag.Name = profile.Name;
+                ViewBag.Age = profile.Age;
+                ViewBag.MaritalStatus = profile.Single ? "single" : "married";
+                List<string> edu = new List<string>();
+                if (profile.None)
+                {
+                    edu.Add("none education");
+                }
+                if (profile.High_school)
+                {
+                    edu.Add("high school");
+                }
+                if (profile.Bachelor)
+                {
+                    edu.Add("barchelor");
+                }
+                if (profile.Master)
+                {
+                    edu.Add("master");
+                }
+                if (profile.Phd)
+                {
+                    edu.Add("phd");
+                }
+                ViewBag.edu = edu;
+            }
+
+            return View();
         }
     }
 }

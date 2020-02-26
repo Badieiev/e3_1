@@ -1,24 +1,27 @@
-﻿@model IEnumerable<e3_1.Models.Article>
+﻿@model IEnumerable<e3_1.ViewModels.ArticlePreview>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
+<h2>list article</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Article.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.Article.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Text)
+            @Html.DisplayNameFor(model => model.Article.Text)
         </th>
         <th></th>
     </tr>
@@ -26,17 +29,17 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Name)
+        @Html.DisplayFor(modelItem => item.Article.Name)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Date)
+        @Html.DisplayFor(modelItem => item.Article.Date)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Text)
+        @Html.DisplayFor(modelItem => item.Preview)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ArticleID }) |
-        @Html.ActionLink("Review", "Review", new { id = item.ArticleID }) |
+        @Html.ActionLink("Edit", "Edit", new { id = item.Article.ArticleID }) |
+        @Html.ActionLink("Review", "Review", new { id = item.Article.ArticleID })
     </td>
 </tr>
 }

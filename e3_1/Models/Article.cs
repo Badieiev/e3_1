@@ -9,6 +9,8 @@ namespace e3_1.Models
     {
         public int ArticleID { get; set; }
         public string Name { get; set; }
+
+        //[DataType(DataType.Date)]
         public DateTime Date { get; set; }
         public string Text { get; set; }
 
